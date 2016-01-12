@@ -23,6 +23,7 @@ nav {
     margin-bottom: 20px;
     display: flex;
     padding: 10px;
+    border-radius: 40px;
 }
 
 nav header {
@@ -52,6 +53,7 @@ nav a {
 main {
     background: rgb(186, 116, 36);
     display: flex;
+    border-radius: 10px;
 }
 
 [class=sidebar] {
