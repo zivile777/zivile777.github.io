@@ -1,5 +1,5 @@
 var animal = {
-    species: "reptiles", 
+    species: "crocodile", 
     name:"Steve", 
     noises: [] };
                
@@ -15,21 +15,21 @@ var animals = [];
 animals.push(animal);
 
 var duck = {
-    species: 'birds',
+    species: 'duck',
     name: 'Jerome',
     noises: ['quack', 'honk', 'sneeze', 'woosh'] };
 
 animals.push(duck);
 
 var lion = {
-    species: 'cats',
+    species: 'lion',
     name: 'Simba',
     noises: ['rawr', 'purrr', 'meow'] };
 
 animals.push(lion);
 
 var dog = {
-    species: 'wolves',
+    species: 'dog',
     name: 'Rikis',
     noises: ['au', 'wuf', 'grrr'] };
     
@@ -47,6 +47,7 @@ function friendsList (animals) {
 
 friends.push(animals[friendsList(animals)].name);
 
+
 // console.log(friendsList(animals[]);
  
 //console.log(animals[friendsList(animals)]);//animals are an array that uses random number through friendsList that gets it from animals array
@@ -59,12 +60,42 @@ animal['friends'] = friends;
 
 
 //part 2
+//console.log(animals);
 
-function search(Koala) {
-    if(Koala === true) {
-        return animals.string(Koala);
-    } else {
-        return null;
+function search(nameOfAnimal) {
+    for (var i = 0; i < animals.length; i++) {
+        if (nameOfAnimal === animals[i].name) {
+            return animals[i];
+        } 
     }
 }
-console.log(search());
+
+ //console.log(search('Simba'));
+ 
+ function edit(nameOfAnimal, object) {
+     for (var i = 0; i < animals.length; i++) {
+         if (nameOfAnimal === animals[i].name) {
+             return animals[i] = object;
+         }
+     }
+ }
+ 
+ function remove(nameOfAnimal) {
+     var nonAnimals = [];
+     for (var i = 0; i < animals.length; i++) {
+         if (nameOfAnimal !== animals[i].name) { //If that name doesn't equal to the object name, we want to remove - push it into a new array
+            nonAnimals.push(animals[i]);
+         }
+     } animals = nonAnimals;
+ }
+//remove('Simba');
+//console.log(animals);
+
+function create(objectNew) {
+    for (var i = 0; i < animals.length; i++) {
+        if (objectNew.name.length > 0 && objectNew.species.length > 0 && objectNew.name !== animals[i].name) {
+             // I have to push only 1 instead 4(for each animal)
+        } 
+    } animals.push(objectNew);
+} 
+console.log(animals);
