@@ -257,13 +257,13 @@
      *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
      */
     _.unique = function(array) {
-        var res = [];
+        var result = [];
         for (var i = 0; i < array.length; i++) {
-            if (_.indexOf(res, array[i]) === -1) {
-                res.push(array[i]);
+            if (_.indexOf(result, array[i]) === -1) {
+                result.push(array[i]);
             }
         }
-        return res;
+        return result;
     }
 
 
