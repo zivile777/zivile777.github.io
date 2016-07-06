@@ -31,18 +31,18 @@ QUnit.test("_.typeof()", function(assert) {
 });
 
 QUnit.test("_.first()", function(assert){
-    assert.deepEqual(_.first(["a","b","c"]) ,"a", "Should return the first element if no numerical argument is given.");
-    assert.deepEqual(_.first(["a","b","c"],2) ,["a","b"], "Should accept an argument representing the number of items to include in the output.");
-    assert.deepEqual(_.first(["a","b","c"], -1) ,[], "Should return empty list if numerical argument is not a positive number.");
-    assert.deepEqual(_.first(["a","b","c"], 5) ,["a","b","c"], "Should return the whole array if numerical argument is greater than the array's length.");
+    assert.deepEqual(_.first(["a","b","c"]) ,"a", "Should return the first element.");
+    assert.deepEqual(_.first(["a","b","c"],2) ,["a","b"], "Should accept a length argument.");
+    assert.deepEqual(_.first(["a","b","c"], -1) ,[], "Should return empty list if length is not a positive number.");
+    assert.deepEqual(_.first(["a","b","c"], 5) ,["a","b","c"], "Should return the whole array if length is longer than the array's length.");
     assert.deepEqual(_.first({a:"b"}, 2), [], "Should return empty array if the array param is not an array.");
 });
 
 QUnit.test("_.last()", function(assert){
-    assert.deepEqual(_.last(["a","b","c"]) ,"c", "Should return the last element if no numerical argument is given.");
-    assert.deepEqual(_.last(["a","b","c"],2) ,["b","c"], "Should accept an argument representing the number of items to include in the output.");
-    assert.deepEqual(_.last(["a","b","c"], -1) ,[], "Should return empty list if numerical argument is not a positive number.");
-    assert.deepEqual(_.last(["a","b","c"], 5) ,["a","b","c"], "Should return the whole array if numerical argument is greater than the array's length.");
+    assert.deepEqual(_.last(["a","b","c"]) ,"c", "Should return the last element.");
+    assert.deepEqual(_.last(["a","b","c"],2) ,["b","c"], "Should accept a length argument.");
+    assert.deepEqual(_.last(["a","b","c"], -1) ,[], "Should return empty list if length is not a positive number.");
+    assert.deepEqual(_.last(["a","b","c"], 5) ,["a","b","c"], "Should return the whole array if length is longer than the array's length.");
     assert.deepEqual(_.last({a:"b"}, 2), [], "Should return empty array if the array param is not an array.");
 });
 

@@ -1,101 +1,113 @@
-var animal = {
-    species: "crocodile", 
-    name:"Steve", 
-    noises: [] };
-               
-var noises = ["Arrrr", "quack"];
 
-noises.unshift("Grooowl");
-noises.push("pooopoooo");
+var animal = {};
 
-animal['noises'] = noises; /// pay attention to this!!!!!!
-noises.push("blaaaa");
+animal.species = "cheeta";
 
-var animals = [];
-animals.push(animal);
+animal["name"] = "Jerry";
 
-var duck = {
-    species: 'duck',
-    name: 'Jerome',
-    noises: ['quack', 'honk', 'sneeze', 'woosh'] };
-
-animals.push(duck);
-
-var lion = {
-    species: 'lion',
-    name: 'Simba',
-    noises: ['rawr', 'purrr', 'meow'] };
-
-animals.push(lion);
-
-var dog = {
-    species: 'dog',
-    name: 'Rikis',
-    noises: ['au', 'wuf', 'grrr'] };
-    
-animals.push(dog);    
-
-//console.log(animals);
-
-//array is good for containing a list, as it naturally is capable of containing a list of indeces
- 
-var friends = [];
-//friendsList has to return a random animal not an integer
-function friendsList (animals) {
-     return Math.floor(Math.random() * animals.length); // === random number
-}
-
-friends.push(animals[friendsList(animals)].name);
-
-
-// console.log(friendsList(animals[]);
- 
-//console.log(animals[friendsList(animals)]);//animals are an array that uses random number through friendsList that gets it from animals array
-
-//console.log(friends);
-
-animal['friends'] = friends;
+animal.noises = [];
 
 //console.log(animal);
 
+var noises = [];
 
-//part 2
+noises[0] = "Roar";
+
+noises.push("Meow");
+
+noises.unshift("Braw");
+
+noises[noises.length] = "Scheisse";
+
+// console.log(noises.length);
+// console.log(animal);
+// console.log(noises[noises.length - 1]);
+// console.log(noises);
+
+animal['noises'] = noises;
+
+animal.noises.push("Purr");
+//console.log(animal);
+
+var animals = [];
+
+animals.push(animal);
 //console.log(animals);
 
+var duck = {
+    species: "duck",
+    name: "Jerome",
+    noises: ['quack', 'honk', 'sneeze', 'woosh']
+};
+
+animals.push(duck);
+//console.log(animals);
+
+var dog = {
+    species: "dog",
+    name: "Simba",
+    noises: ["woof", "au", "rrrr"]
+};
+
+animals.push(dog);
+
+var cat = {
+    species: "cat",
+    name: "Mikis",
+    noises: ["kiaow", "meow", "prrrr"]
+};
+
+animals.push(cat);
+
+//console.log(animals.length);
+
+var friends = []; //Array is a good data structure to hold multiple objects
+
+//friendsList has to return a random animal not an integer
+function friendsList (animals) {
+     return animals[Math.floor(Math.random() * animals.length)]; //animals[random number].name
+}
+//console.log(friendsList(animals));
+
+friends.push(friendsList(animals).name);
+//console.log(friends);
+
+for(var i = 0; i < animals.length; i++) {
+   animals[i]['friends'] = friends;
+}
+console.log(animals);
+
 function search(nameOfAnimal) {
-    for (var i = 0; i < animals.length; i++) {
-        if (nameOfAnimal === animals[i].name) {
+    for(var i = 0; i < animals.length; i++) {
+        if(animals[i].name === nameOfAnimal) {
             return animals[i];
-        } 
+        }
     }
 }
 
- //console.log(search('Simba'));
- 
- function edit(nameOfAnimal, object) {
-     for (var i = 0; i < animals.length; i++) {
-         if (nameOfAnimal === animals[i].name) {
-             return animals[i] = object;
-         }
-     }
- }
- 
- function remove(nameOfAnimal) {
-     var nonAnimals = [];
-     for (var i = 0; i < animals.length; i++) {
-         if (nameOfAnimal !== animals[i].name) { //If that name doesn't equal to the object name, we want to remove - push it into a new array
-            nonAnimals.push(animals[i]);
-         }
-     } animals = nonAnimals;
- }
-//remove('Simba');
-//console.log(animals);
+function edit(nameOfAnimal, object) {
+    for(var i = 0; i < animals.length; i++) {
+        if(animals[i].name === nameOfAnimal) {
+            animals[i] = object;
+        }
+    }
+}
+
+function remove(nameOfAnimal) {
+    var removedAnimals = [];
+    for(var i = 0; i < animals.length; i++) {
+        if(animals[i].name !== nameOfAnimal) {
+            removedAnimals.push(animals[i]);
+        }
+    } animals = removedAnimals;
+}
+
+//console.log(remove("Simba"));
 
 function create(objectNew) {
     for (var i = 0; i < animals.length; i++) {
         if (objectNew.name.length > 0 && objectNew.species.length > 0 && objectNew.name !== animals[i].name) {
-             // I have to push only 1 instead 4(for each animal)
         } 
     } animals.push(objectNew);
 } 
-console.log(animals);
+//console.log(animals);

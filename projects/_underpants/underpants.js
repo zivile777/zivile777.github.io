@@ -28,7 +28,6 @@
     _.identity = function(value) {
         return value;
     };
-
     /** _.typeOf()
      * Arguments:
      *   1) Anything
@@ -49,10 +48,15 @@
      * _.typeOf([1,2,3]) -> "array"
      */
     _.typeOf = function(value) {
-        if (Array.isArray(value)) return "array";
-        if (value === null) return "null";
-        if (value instanceof Date) return "date";
-        return typeof value; //returning early
+        if (Array.isArray(value)) {
+            return "array";
+        }
+        else if (value === null) {
+            return "null";
+        }
+        else {
+            return typeof value;
+        }
     };
 
     /** _.first()
@@ -71,13 +75,11 @@
      *   _.first(["a","b","c"], 2) -> ["a", "b"]
      *   _.first(["a", "b", "c"], "ponies") -> ["a","b","c"]
      */
+
     _.first = function(array, n) {
-        if (n < 0 || !Array.isArray(array)) return [];
-        if (n === undefined) return array[0];
-        if (n > 0) {
-            n = n > array.length ? array.length : n;
-            return array.slice(0, n);
-        }
+        n = n || 1;
+        if (n < 1 || !Array.isArray(array)) return [];
+        return n > 1 ? array.slice(0, n) : array[0];
     };
 
     /** _.last()
@@ -96,13 +98,9 @@
      *   _.last(["a", "b", "c"], "ponies") -> ["a","b","c"]
      */
     _.last = function(array, n) {
-        let isArray = Array.isArray(array);
-        if (!isArray || n < 0) return [];
-        if (n === undefined) return array[array.length - 1];
-        if (n > 0) {
-            n = n > array.length ? array.length : n;
-            return array.slice(-n);
-        }
+        n = n || 1;
+        if (n < 1 || !Array.isArray(array)) return [];
+        return n > 1 ? array.slice(-n) : array[array.length - 1];
     };
 
     /** _.each()
@@ -148,14 +146,16 @@
      *   _.indexOf(["a","b","c"], "c") -> 2
      *   _.indexOf(["a","b","c"], "d") -> -1
      */
+
     _.indexOf = function(array, value) {
         for (var i = 0; i < array.length; i++) {
             if (array[i] === value) {
-                return 1;
+                return i;
             }
         }
         return -1;
     };
+
 
     /** _.filter()
      * Arguments:
@@ -172,14 +172,15 @@
      * Extra Credit:
      *   use _.each in your implementation
      */
-    _.filter = function(array, test) {
-        var filtered = [];
-        _.each(array, function(value, position, array) {
-            if (test(value, position, array)) {
-                filtered.push(value);
+
+    _.filter = function filter(collection, test) {
+        var filteredValues = [];
+        _.each(collection, function(value, position, collection) {
+            if (test(value, position, collection)) {
+                filteredValues.push(value);
             }
         });
-        return filtered;
+        return filteredValues;
     };
 
     /** _.reject()
@@ -194,11 +195,21 @@
      * Examples:
      *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
      */
-    _.reject = function(array, test) {
-        return _.filter(array, function(value, position, array) {
-            return !test(value, position, array);
+
+    // _.reject = function(collection, test) {
+    //     var rejected = [];
+    //     _.each(collection, function(value, position, collection){
+    //       if(!test(value, position, collection)) {
+    //           rejected.push(value);
+    //       }
+    //     }); return rejected;
+    // };
+
+    _.reject = function(collection, test) {
+        return _.filter(collection, function(value, position, collection) {
+            return !test(value, position, collection)
         });
-    };
+    }
 
     /** _.partition()
     * Arguments:
@@ -218,9 +229,23 @@
     *   }); -> [[2,4],[1,3,5]]
     }
     */
+    // _.partition = function(array, test) {
+    //     var separatedTrue = [];
+    //     var separatedFalse = [];
+    //     _.filter(array, function(value, position, array){
+    //         if (test(value, position, array)) {
+    //             separatedTrue.push(value);
+    //         } else if (!test(value, position, array)) {
+    //             separatedFalse.push(value);
+    //         }
+    //     }); 
+    //       return [separatedTrue, separatedFalse];
+    // };
+
     _.partition = function(array, test) {
         return [_.filter(array, test), _.reject(array, test)];
     };
+
 
     /** _.unique()
      * Arguments:
@@ -231,16 +256,16 @@
      * Examples:
      *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
      */
-
     _.unique = function(array) {
-        var uniqueValues = [];
+        var result = [];
         for (var i = 0; i < array.length; i++) {
-            if (_.indexOf(uniqueValues, array[i]) === -1) {
-                uniqueValues.push(array[i]);
+            if (_.indexOf(result, array[i]) === -1) {
+                result.push(array[i]);
             }
         }
-        return uniqueValues;
-    };
+        return result;
+    }
+
 
     /** _.map()
      * Arguments:
@@ -257,6 +282,7 @@
      * Examples:
      *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
      */
+
     _.map = function(collection, transform) {
         var mapped = [];
         _.each(collection, function(value, position, collection) {
@@ -264,6 +290,7 @@
         });
         return mapped;
     };
+
 
     /** _.pluck()
      * Arguments:
@@ -275,10 +302,10 @@
      * Examples:
      *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
      */
-    _.pluck = function(arrayOfObjects, property) {
+    _.pluck = function(array, property) {
         var plucked = [];
-        _.map(arrayOfObjects, function(object) {
-            plucked.push(object[property]);
+        _.map(array, function(array) {
+            plucked.push(array[property]);
         });
         return plucked;
     };
@@ -297,12 +324,26 @@
      * Examples:
      *   _.contains([1,"two", 3.14], "two") -> true
      */
-     
-    _.contains = function(collection, value) {
+
+    _.contains = function(collection, target) {
         return _.reduce(collection, function(match, item) {
-            return match ? true : item === value;
+            if (match) {
+                return true;
+            }
+            else {
+                return item === target;
+            }
         }, false);
     };
+
+
+    // _.contains = function(array, value) {
+    //     for (var i = 0; i < array.length; i++) {
+    //         if (array[i] === value) {
+    //           return true;
+    //         }
+    //     } return false;
+    // };
 
     /** _.every()
      * Arguments:
@@ -323,9 +364,10 @@
      * Examples:
      *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
      *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
-     */
-    _.every = function(collection, test) {
+     **/
+     _.every = function(collection, test) {
         test = test || _.identity;
+        var result = true;
         if (Array.isArray(collection)) {
             for (var i = 0; i < collection.length; i++) {
                 if (!test(collection[i], i, collection)) {
@@ -340,8 +382,35 @@
                 }
             }
         }
-        return true;
+        return result;
     };
+     
+    // _.every = function(collection, fn) {
+    //     return _.reduce(collection, function(a, b) {
+    //             return a && fn(b);
+    //         },
+    //         true);
+    // };
+
+    // _.every = function(collection, test) {
+
+    //  if(Array.isArray(collection)){    
+    //   for(var i = 0; i < collection.length ;i++) {
+    //      if (!test(collection[i], i, collection)) return false;
+    //   }
+    //  } else {
+    //   for(var key in collection){
+    //       if(!test(collection[key], key, collection)) return false;
+    //   }
+    //  }
+    //  return true;
+    // };
+    // _.every = function(collection, test) {
+    //     return _.reduce(collection, function(summary, item) {
+    //          return !!test(item && summary);
+    //      }, true); 
+    // }; 
+
 
     /** _.some()
      * Arguments:
@@ -363,8 +432,10 @@
      *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
      *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
      */
+
     _.some = function(collection, test) {
         test = test || _.identity;
+        var result = false;
         if (Array.isArray(collection)) {
             for (var i = 0; i < collection.length; i++) {
                 if (test(collection[i], i, collection)) {
@@ -379,8 +450,29 @@
                 }
             }
         }
-        return false;
+        return result;
     };
+    // _.some = function (collection, fn) {
+    //   return _.reduce(collection, function (a, b) { return a || fn(b); },
+    //     false);
+    // };
+
+    // _.some = function (collection, test) {
+    //     _.each (collection, function(value, position, collection){
+    //         if (collection !== null || collection !== undefined) {
+    //             return true;
+    //         } return false;
+    //     }); return true;
+    // };
+    // _.some = function (collection, test) {
+    //     for (var key in collection) {
+    //         return true;
+    //     } if (Array.isArray(collection)) {
+    //         return true;
+    //     } if (collection !== null || collection !== undefined) {
+    //         return true;
+    //     }    
+    // };
 
 
     /** _.reduce()
@@ -401,16 +493,35 @@
      * Examples:
      *   _.reduce([1,2,3], function(prev, curr){ return prev + curr}) -> 6
      */
-    _.reduce = function(collection, summarize, seed) {
-        var summary = seed;
-        if (seed === undefined) {
-            summary = collection[0];
+    _.reduce = function(collection, summarize, start) { //combine/summarize is a function
+        var summary = start; //assign output to starting value
+        if (summary === undefined) {
+            summary = _.getFirstCollectionValue(collection);
+            //collection = collection.slice(1); //not modifying original array, slices until the end of array because we don't give second index
         }
         _.each(collection, function(value, position, collection) {
             summary = summarize(summary, value, position, collection);
         }, {});
         return summary;
     };
+    // function sum(summary, value) {
+    //     return summary + value;
+    // }
+
+    _.getFirstCollectionValue = function(collection) {
+        if (Array.isArray(collection)) {
+            return collection[0];
+        }
+        var sortedKeys = Object.keys(collection).sort();
+        var firstKey = _.first(sortedKeys);
+        return collection(firstKey);
+    };
+
+
+
+
+    //return collection[_.first(Object.keys(collection).sort())];
+
 
     /** _.extend()
      * Arguments:
@@ -426,16 +537,14 @@
      *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
      *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
      */
-     _.extend = function(ob1) {
-         _.each(arguments, function(ob2){
-             _.each(ob2, function(value, key){
-                 ob1[key] = value;
-             });
-         });
-         return ob1;
-     };
-   
-
+    _.extend = function(obj) {
+        _.each(arguments, function(newObject) {
+            _.each(newObject, function(value, key) {
+                obj[key] = value;
+            });
+        });
+        return obj;
+    };
 
     // This is the proper way to end a javascript library
 }());
