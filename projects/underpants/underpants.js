@@ -401,10 +401,11 @@
      * Examples:
      *   _.reduce([1,2,3], function(prev, curr){ return prev + curr}) -> 6
      */
-    _.reduce = function(collection, summarize, seed) {
-        var summary = seed;
-        if (seed === undefined) {
+    _.reduce = function(collection, summarize, start) {
+        var summary = start;
+        if (start === undefined) {
             summary = collection[0];
+            
         }
         _.each(collection, function(value, position, collection) {
             summary = summarize(summary, value, position, collection);
@@ -428,7 +429,7 @@
      */
      _.extend = function(ob1) {
          _.each(arguments, function(ob2){
-             _.each(ob2, function(value, key){
+             _.each(ob2, function(value, key, collection){
                  ob1[key] = value;
              });
          });

@@ -75,12 +75,6 @@ function createProductsDetailsDiv(desc, price, stock) {
     var stock = $('<div>')
         .addClass('stock')
         .html("In stock: " + stock);
-    var availableColors = $('<div>').
-    addClass('availableColors')
-        .html('Available colors: ' + availableColors);
-    var specs = $('<div>')
-        .addClass('specs')
-        .html(specs);
 
     return $('<div>').addClass('product-details').append(desc, price, stock);
 }
