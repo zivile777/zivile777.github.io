@@ -191,7 +191,7 @@ body {
 	transition: opacity 0.6s;
 }
 
-.div-text-resume:hover {
+.div-text-resume:hover, .div-text-resume:active {
   opacity: .8;
 }
 .div-text-resume h3 {
@@ -213,7 +213,7 @@ body {
 	transition: opacity 0.6s;
 }
 
-.div-text-portfolio:hover {
+.div-text-portfolio:hover, .div-text-portfolio:active {
   opacity: .8;
 }
 .div-text-portfolio h3 {
@@ -235,7 +235,7 @@ body {
 	transition: opacity 0.6s;
 }
 
-.div-text-publishings:hover {
+.div-text-publishings:hover, .div-text-publishings:active {
   opacity: .8;
 }
 .div-text-publishings h3 {
@@ -257,7 +257,7 @@ body {
 	transition: opacity 0.6s;
 }
 
-.div-text-blog:hover {
+.div-text-blog:hover, .div-text-blog:active {
   opacity: .8;
 }
 .div-text-blog h3 {
