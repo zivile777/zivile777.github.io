@@ -410,16 +410,7 @@ a {
   text-align: justify;
 }
 
-.home:hover {
-  color: #f7cdf5;
-  cursor: pointer;
-  -webkit-transition: color 1s ease-out;
-  -moz-transition: color 1s ease-out;
-  -o-transition: color 1s ease-out;
-  transition: color 1s ease-out;
-}
-
-.next:hover {
+.nav-button:hover {
   color: #f7cdf5;
   cursor: pointer;
   -webkit-transition: color 1s ease-out;
