@@ -24,6 +24,8 @@ body {
     position: relative;
   }
 
+  /* INDEX */
+
   .logo-title {
     color: #000;
     font: 400 70px/.95 "Neue Droschke",sans-serif;
@@ -99,7 +101,7 @@ body {
 }
 
 .fa-linkedin:hover {
-  color: pink;
+  color: #f7cdf5;
   cursor: pointer;
   -webkit-transition: color 1s ease-out;
   -moz-transition: color 1s ease-out;
@@ -108,7 +110,7 @@ body {
 }
 
 .fa-github:hover {
-  color: pink;
+  color: #f7cdf5;
   cursor: pointer;
   -webkit-transition: color 1s ease-out;
   -moz-transition: color 1s ease-out;
@@ -117,7 +119,7 @@ body {
 }
 
 .fa-instagram:hover {
-  color: pink;
+  color: #f7cdf5;
   cursor: pointer;
   -webkit-transition: color 1s ease-out;
   -moz-transition: color 1s ease-out;
@@ -126,7 +128,7 @@ body {
 }
 
 .fa-pinterest:hover {
-  color: pink;
+  color: #f7cdf5;
   cursor: pointer;
   -webkit-transition: color 1s ease-out;
   -moz-transition: color 1s ease-out;
@@ -146,7 +148,7 @@ body {
 }
 
 .button-contact:hover {
-  color: pink;
+  color: #f7cdf5;
   cursor: pointer;
   -webkit-transition: color 1s ease-out;
   -moz-transition: color 1s ease-out;
@@ -160,7 +162,7 @@ body {
   text-align: center;
 }
 
-.container {
+.container-index {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -184,7 +186,7 @@ body {
 	width: 500px;
 	height: 350px;
 	text-align: center;
-	background-color: pink;
+	background-color: #f7cdf5;
 	opacity: 0;
 	-webkit-transition: opacity 0.6s;
 	-moz-transition: opacity 0.6s;
@@ -206,7 +208,7 @@ body {
 	width: 500px;
 	height: 350px;
 	text-align: center;
-	background-color: pink;
+	background-color: #f7cdf5;
 	opacity: 0;
 	-webkit-transition: opacity 0.6s;
 	-moz-transition: opacity 0.6s;
@@ -228,7 +230,7 @@ body {
 	width: 500px;
 	height: 350px;
 	text-align: center;
-	background-color: pink;
+	background-color: #f7cdf5;
 	opacity: 0;
 	-webkit-transition: opacity 0.6s;
 	-moz-transition: opacity 0.6s;
@@ -250,7 +252,7 @@ body {
 	width: 500px;
 	height: 350px;
 	text-align: center;
-	background-color: pink;
+	background-color: #f7cdf5;
 	opacity: 0;
 	-webkit-transition: opacity 0.6s;
 	-moz-transition: opacity 0.6s;
@@ -263,4 +265,165 @@ body {
 .div-text-blog h3 {
   color: white;
   font-size: 90px;
+}
+
+/* RESUME */
+
+.container-resume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
+
+.logo-resume {
+  color: #000;
+  font: 400 70px/.95 "Neue Droschke",sans-serif;
+  letter-spacing: 5px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.about-me {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #f7cdf5;
+  text-align: center;
+}
+
+.about-me-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.me-img {
+  display: flex;
+  justify-content: center;
+}
+
+.skills {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #ddd;
+  text-align: center;
+}
+
+.skills-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  padding-left: 10px;
+  padding-left: 10px;
+}
+
+.skills-img {
+  opacity: .6;
+  display: flex;
+  justify-content: center;
+}
+
+.work {
+  width: 100%;
+  text-align: center;
+  background-color: #ddd;
+}
+
+.other {
+  width: 100%;
+  text-align: center;
+  background-color: #ddd;
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.accordion.active, button.accordion:hover {
+    background-color: #f7cdf5;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.accordion.active:after {
+    content: "\2212";
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: #ddd;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.education {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #f7cdf5;
+  text-align: center;
+}
+
+.education-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.education-pic {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.p-work {
+  text-align: justify;
+}
+
+.home:hover {
+  color: #f7cdf5;
+  cursor: pointer;
+  -webkit-transition: color 1s ease-out;
+  -moz-transition: color 1s ease-out;
+  -o-transition: color 1s ease-out;
+  transition: color 1s ease-out;
+}
+
+.next:hover {
+  color: #f7cdf5;
+  cursor: pointer;
+  -webkit-transition: color 1s ease-out;
+  -moz-transition: color 1s ease-out;
+  -o-transition: color 1s ease-out;
+  transition: color 1s ease-out;
 }
